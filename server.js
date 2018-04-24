@@ -6,7 +6,10 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //Server static filles from React app
-app.use(express.static(path.join(_dirname, 'client/build')));
+// app.use(express.static(path.join(_dirname, 'client/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
 
 
 const router  = express.Router();
